@@ -1,92 +1,106 @@
 function start() {
 
 	$("#inicio").hide();
-	
+
 	$("#fundoGame").append("<div id='jogador' class='anima1'></div>");
 	$("#fundoGame").append("<div id='inimigo1' class='anima2'></div>");
 	$("#fundoGame").append("<div id='inimigo2'></div>");
 	$("#fundoGame").append("<div id='amigo' class='anima3'></div>");
 
-//$ é usado por conta do JQuery
-let velocidade=5;
-var posicaoY = parseInt(Math.random() * 334);
-let jogo = {}
-let TECLA = {
-	W: 87,
-	S: 83,
-	D: 68
+	//$ é usado por conta do JQuery
+	let velocidade = 5;
+	var posicaoY = parseInt(Math.random() * 334);
+	let jogo = {}
+	let TECLA = {
+		W: 87,
+		S: 83,
+		D: 68
 	}
 
 	jogo.pressionou = [];
 
 	//Verifica se o usuário pressionou alguma tecla	
-	
-	$(document).keydown(function(e){
+
+	$(document).keydown(function (e) {
 		jogo.pressionou[e.which] = true;
-		});
-	
-	
-		$(document).keyup(function(e){
-		   jogo.pressionou[e.which] = false;
-		});
+	});
+
+
+	$(document).keyup(function (e) {
+		jogo.pressionou[e.which] = false;
+	});
 
 	//Game Loop
-	jogo.timer = setInterval(loop,30);
-	
+	jogo.timer = setInterval(loop, 30);
+
 	function loop() {
-	
-	movefundo();
-	movejogador();
-	moveinimigo1();
-	
-	} 
-	
-	
-	function movefundo() {//Função que movimenta o fundo do jogo
-	
-	esquerda = parseInt($("#fundoGame").css("background-position"));
-	$("#fundoGame").css("background-position",esquerda-1);
-	
+
+		movefundo();
+		movejogador();
+		moveinimigo1();
+		moveinimigo2();
+
 	}
-	
+
+
+	function movefundo() {//Função que movimenta o fundo do jogo
+
+		esquerda = parseInt($("#fundoGame").css("background-position"));
+		$("#fundoGame").css("background-position", esquerda - 1);
+
+	}
+
 	function movejogador() {
-	
+
 		if (jogo.pressionou[TECLA.W]) {
 			var topo = parseInt($("#jogador").css("top"));
-			$("#jogador").css("top",topo-10);
+			$("#jogador").css("top", topo - 10);
 
-			if (topo<=0) {
-		
-				$("#jogador").css("top",topo+10);
+			if (topo <= 0) {
+
+				$("#jogador").css("top", topo + 10);
 			}
-		
+
 		}
-		
+
 		if (jogo.pressionou[TECLA.S]) {
-			
-			var topo = parseInt($("#jogador").css("top"));
-			$("#jogador").css("top",topo+10);
 
-			if (topo>=434) {	
-				$("#jogador").css("top",topo-10);
-					
+			var topo = parseInt($("#jogador").css("top"));
+			$("#jogador").css("top", topo + 10);
+
+			if (topo >= 434) {
+				$("#jogador").css("top", topo - 10);
+
 			}
 		}
-		
+
 		if (jogo.pressionou[TECLA.D]) {//Chama função Disparo	
-		} 
+		}
+	}
+
+	function moveinimigo1() {
+
+		posicaoX = parseInt($("#inimigo1").css("left"));
+		$("#inimigo1").css("left", posicaoX - velocidade);
+		$("#inimigo1").css("top", posicaoY);
+
+		if (posicaoX <= 0) {
+			posicaoY = parseInt(Math.random() * 334);
+			$("#inimigo1").css("left", 694);
+			$("#inimigo1").css("top", posicaoY);
+
+		}
 	}
 	
-		function moveinimigo1() {
+	function moveinimigo2() {
+		
+		posicaoX = parseInt($("#inimigo2").css("left"));
+		$("#inimigo2").css("left", posicaoX - 3);
 
-			posicaoX = parseInt($("#inimigo1").css("left"));
-			$("#inimigo1").css("left",posicaoX-velocidade);
-			$("#inimigo1").css("top",posicaoY);
-				
-				if (posicaoX<=0) {
-				posicaoY = parseInt(Math.random() * 334);
-				$("#inimigo1").css("left",694);
-				$("#inimigo1").css("top",posicaoY);
-					
-				}
-}	}
+		if (posicaoX <= 0) {
+
+			$("#inimigo2").css("left", 775);
+
+		}
+	}
+}
