@@ -52,18 +52,26 @@ let TECLA = {
 		if (jogo.pressionou[TECLA.W]) {
 			var topo = parseInt($("#jogador").css("top"));
 			$("#jogador").css("top",topo-10);
+
+			if (topo<=0) {
+		
+				$("#jogador").css("top",topo+10);
+			}
 		
 		}
 		
 		if (jogo.pressionou[TECLA.S]) {
 			
 			var topo = parseInt($("#jogador").css("top"));
-			$("#jogador").css("top",topo+10);	
+			$("#jogador").css("top",topo+10);
+
+			if (topo>=434) {	
+				$("#jogador").css("top",topo-10);
+					
+			}
 		}
 		
-		if (jogo.pressionou[TECLA.D]) {
-			
-			//Chama função Disparo	
+		if (jogo.pressionou[TECLA.D]) {//Chama função Disparo	
 		}
 	
 		}
