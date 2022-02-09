@@ -8,7 +8,8 @@ function start() {
 	$("#fundoGame").append("<div id='amigo' class='anima3'></div>");
 
 //$ é usado por conta do JQuery
-
+let velocidade=5;
+var posicaoY = parseInt(Math.random() * 334);
 let jogo = {}
 let TECLA = {
 	W: 87,
@@ -36,6 +37,7 @@ let TECLA = {
 	
 	movefundo();
 	movejogador();
+	moveinimigo1();
 	
 	} 
 	
@@ -72,7 +74,19 @@ let TECLA = {
 		}
 		
 		if (jogo.pressionou[TECLA.D]) {//Chama função Disparo	
-		}
+		} 
+	}
 	
-		}
-}
+		function moveinimigo1() {
+
+			posicaoX = parseInt($("#inimigo1").css("left"));
+			$("#inimigo1").css("left",posicaoX-velocidade);
+			$("#inimigo1").css("top",posicaoY);
+				
+				if (posicaoX<=0) {
+				posicaoY = parseInt(Math.random() * 334);
+				$("#inimigo1").css("left",694);
+				$("#inimigo1").css("top",posicaoY);
+					
+				}
+}	}
