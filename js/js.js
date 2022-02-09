@@ -20,9 +20,9 @@ function start() {
 	let posicaoY = parseInt(Math.random() * 334);
 	let jogo = {}
 	let TECLA = {
-		W: 87,
-		S: 83,
-		D: 68
+		upArrow: 38,
+		downArrow: 40,
+		space: 32,
 	}
 
 	jogo.pressionou = [];
@@ -73,7 +73,7 @@ function start() {
 
 	function movejogador() {
 
-		if (jogo.pressionou[TECLA.W]) {
+		if (jogo.pressionou[TECLA.upArrow]) {
 			var topo = parseInt($("#jogador").css("top"));
 			$("#jogador").css("top", topo - 10);
 
@@ -84,7 +84,7 @@ function start() {
 
 		}
 
-		if (jogo.pressionou[TECLA.S]) {
+		if (jogo.pressionou[TECLA.downArrow]) {
 
 			var topo = parseInt($("#jogador").css("top"));
 			$("#jogador").css("top", topo + 10);
@@ -95,7 +95,7 @@ function start() {
 			}
 		}
 
-		if (jogo.pressionou[TECLA.D]) {
+		if (jogo.pressionou[TECLA.space]) {
 			disparo();//Chama função Disparo	
 		}
 	}

@@ -11,6 +11,7 @@ h1 {
 
 body {
 	background-color:#362706;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 #container{
@@ -23,11 +24,13 @@ body {
 
 
 #fundoGame {
+	margin-top: 170px;
 	width:950px;
 	height:630px;
 	background-image:url(../imgs/fundo_game.jpg);
 	border-color:#FFF;
 	border-style:solid;
+	border-radius: 5px;
 }
 
 #jogador {
@@ -73,7 +76,7 @@ body {
 	height:200px;
 	background-color:#FFF;
  	margin-left:auto;
-        margin-right:auto;
+    margin-right:auto;
  	margin-top:200px;
 	text-align:center;
 	padding:10px;
@@ -246,7 +249,11 @@ h3 {
 	font-family:Titulo;
 	font-size:20px;
 	color:#603A03;
+}
 
+h3:hover{
+	color: grey;
+	cursor: pointer;
 }
 
 #fim {
