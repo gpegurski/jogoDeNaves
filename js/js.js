@@ -173,29 +173,40 @@ function start() {
 
 		if (colisao2.length > 0) {
 
-				inimigo2X = parseInt($("#inimigo2").css("left"));
-				inimigo2Y = parseInt($("#inimigo2").css("top"));
-				explosao2(inimigo2X, inimigo2Y);
+			inimigo2X = parseInt($("#inimigo2").css("left"));
+			inimigo2Y = parseInt($("#inimigo2").css("top"));
+			explosao2(inimigo2X, inimigo2Y);
 
-				$("#inimigo2").remove();
+			$("#inimigo2").remove();
 
-				reposicionaInimigo2();
+			reposicionaInimigo2();
 
-			
-		} if (colisao3.length>0) {
-		
-		
+
+		} if (colisao3.length > 0) {
+
+
 			inimigo1X = parseInt($("#inimigo1").css("left"));
 			inimigo1Y = parseInt($("#inimigo1").css("top"));
-				
-			explosao1(inimigo1X,inimigo1Y);
-			$("#disparo").css("left",950);
-				
+
+			explosao1(inimigo1X, inimigo1Y);
+			$("#disparo").css("left", 950);
+
 			posicaoY = parseInt(Math.random() * 334);
-			$("#inimigo1").css("left",694);
-			$("#inimigo1").css("top",posicaoY);
+			$("#inimigo1").css("left", 694);
+			$("#inimigo1").css("top", posicaoY);
+
+		} if (colisao4.length>0) {
+		
+			inimigo2X = parseInt($("#inimigo2").css("left"));
+			inimigo2Y = parseInt($("#inimigo2").css("top"));
+			$("#inimigo2").remove();
+		
+			explosao2(inimigo2X,inimigo2Y);
+			$("#disparo").css("left",950);
+			
+			reposicionaInimigo2();
 				
-			}
+		}
 
 	}
 	//Explosão 1
@@ -233,24 +244,27 @@ function start() {
 				$("#fundoGame").append("<div id=inimigo2></div");
 
 
-}}}
+			}
+		}
+	}
 
-function explosao2(inimigo2X,inimigo2Y) {
+	function explosao2(inimigo2X, inimigo2Y) {
 
-	$("#fundoGame").append("<div id='explosao2'></div");
-	$("#explosao2").css("background-image", "url(imgs/explosao.png)");
-	let div2=$("#explosao2");
-	div2.css("top", inimigo2Y);
-	div2.css("left", inimigo2X);
-	div2.animate({width:200, opacity:0}, "slow");
-	
-	let tempoExplosao2=window.setInterval(removeExplosao2, 1000);
-	
+		$("#fundoGame").append("<div id='explosao2'></div");
+		$("#explosao2").css("background-image", "url(imgs/explosao.png)");
+		let div2 = $("#explosao2");
+		div2.css("top", inimigo2Y);
+		div2.css("left", inimigo2X);
+		div2.animate({ width: 200, opacity: 0 }, "slow");
+
+		let tempoExplosao2 = window.setInterval(removeExplosao2, 1000);
+
 		function removeExplosao2() {
-			
+
 			div2.remove();
 			window.clearInterval(tempoExplosao2);
-			tempoExplosao2=null;
-			
+			tempoExplosao2 = null;
+
 		}
-	}}
+	}
+}
