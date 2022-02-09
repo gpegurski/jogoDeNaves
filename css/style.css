@@ -193,6 +193,7 @@ body {
 	width:44px;
 	height:51px;
 	animation:play3 .5s steps(7) infinite;
+	background-image:url(../imgs/amigo_morte.png);
 		-webkit-animation: play3 .5s steps(7) infinite;
     	-moz-animation: play3 .5s steps(7) infinite;
     	-ms-animation: play3 .5s steps(7) infinite;
